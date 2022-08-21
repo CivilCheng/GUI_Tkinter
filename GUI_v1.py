@@ -10,8 +10,7 @@ import pandas as pd
 from tkinter import filedialog
 from tkinter import *
 from matplotlib.figure import Figure
-from matplotlib.backends.backend_tkagg import (FigureCanvasTkAgg, 
-NavigationToolbar2Tk)
+from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg, NavigationToolbar2Tk
 
 def browse_button():
     path = filedialog.askdirectory()
@@ -68,18 +67,12 @@ def plot(event):
       
         # creating the Tkinter canvas
         # containing the Matplotlib figure
-        canvas = FigureCanvasTkAgg(fig, master = window)  
-        canvas.draw()
+        fig = FigureCanvasTkAgg(fig, master = window)  
+        fig.draw()
       
-        # placing the canvas on the Tkinter window
-        canvas.get_tk_widget().grid(row=5, column=1, columnspan=2)
+        # placing the fig on the Tkinter window
+        fig.get_tk_widget().grid(row=5, column=1, columnspan=2)
       
-        # creating the Matplotlib toolbar
-        toolbar = NavigationToolbar2Tk(canvas, window)
-        toolbar.update()
-      
-        # placing the toolbar on the Tkinter window
-        canvas.get_tk_widget().grid(row=6, column=1, columnspan=2)    
     
     
 
