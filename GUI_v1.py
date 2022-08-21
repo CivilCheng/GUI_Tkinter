@@ -56,8 +56,6 @@ def plot(event):
         index = selection[0]
         col = event.widget.get(index)
         
-        print(data)
-        
         # the figure that will contain the plot
         fig = Figure(figsize = (2, 2),
                       dpi = 100)
@@ -74,19 +72,19 @@ def plot(event):
         canvas.draw()
       
         # placing the canvas on the Tkinter window
-        canvas.get_tk_widget().grid(row=4, column=1, columnspan=2)
+        canvas.get_tk_widget().grid(row=5, column=1, columnspan=2)
       
         # creating the Matplotlib toolbar
-        # toolbar = NavigationToolbar2Tk(canvas, window)
-        # toolbar.update()
+        toolbar = NavigationToolbar2Tk(canvas, window)
+        toolbar.update()
       
         # placing the toolbar on the Tkinter window
-        # canvas.get_tk_widget().grid(row=4, column=1, columnspan=2)    
+        canvas.get_tk_widget().grid(row=6, column=1, columnspan=2)    
     
     
 
 window = Tk()
-window.geometry('600x400')
+window.geometry('600x600')
 
 dataset = IntVar()
 
@@ -126,8 +124,13 @@ listbox2 = Listbox(window, width=30, height=5, selectmode=SINGLE)
 listbox2.grid(row=3, column=1, columnspan=2)
 listbox2.bind('<<ListboxSelect>>', plot)
 
+lb5 = Label(window, text='Graph')
+lb5.grid(row=4, column=1)
 
 
 
 
 window.mainloop()
+
+
+
